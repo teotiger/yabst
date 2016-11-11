@@ -8,7 +8,7 @@
 ## Options:
 ##  -h, --help      Display this message.
 ##  -v, --version   Display version number.
-##  -q,             Quiet mode.
+##  -q              Quiet mode.
 ##
 ## VAL1 is the first example parameter.
 ## VAL2 is the second example parameter.

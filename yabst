@@ -1,0 +1,100 @@
+#!/bin/bash
+##
+## Usage: yabst [options] [VAL1] [VAL2]
+##
+## Short description in one line.
+## Must be run as root.
+##
+## Options:
+##  -h, --help      Display this message.
+##  -v, --version   Display version number.
+##  -q,             Quiet mode.
+##
+## VAL1 is the first example parameter.
+## VAL2 is the second example parameter.
+##
+## Example:
+## yabst -q "lorem ipsum" 123
+##
+ 
+#-------------------#
+# GLOBAL PARAMETERS #
+#-------------------#
+VMAJ=0  # major version
+VMIN=1  # minor version
+VREV=0  # patch version
+ 
+QTM=0   # quiet mode flag
+ 
+VAL1=   # first example parameter
+VAL2=   # second example parameter
+ 
+#------------------#
+# GLOBAL FUNCTIONS #
+#------------------#
+_config() {  source $1; }
+_echo() {
+  if [ $QTM -eq 0 ]; then
+    echo "$1"
+  fi
+}
+_error() { _echo "$1"; exit 1; }
+_root() {
+  if [[ $(whoami) != "root" ]]; then
+    echo "This program must be run as root." >&2
+    exit 1
+  fi
+}
+_title() {
+  if [ $QTM -eq 0 ]; then
+    (echo; echo \*\*\* $1 \*\*\*; echo)
+  fi
+}
+_usage(){
+  [ "$*" ] && echo "$0: $*"
+  sed -n '/^##/,/^$/s/^## \{0,1\}//p' "$0"
+  exit 2
+}
+_version() {
+  echo "" && echo "$0 version $VMAJ.$VMIN.$VREV"
+  echo "Web: http://github.com/teotiger/yabst" && echo ""
+  exit 2
+}
+ 
+#--------------------#
+# PROGRAMM FUNCTIONS #
+#--------------------#
+step_01(){
+  _title "First program step"
+  _echo "First example parameter => $VAL1"
+  _echo "Second example parameter => $VAL2"
+}
+step_02(){
+  _title "Second program step"
+}
+ 
+#-----------------------#
+# MAIN FUNCTION / START #
+#-----------------------#
+main() {
+  while [ $# -gt 0 ]; do
+    case $1 in
+    (-h|--help) _usage;;
+    (-v|--version) _version;;
+    (-q) QTM=1;shift;;
+    (--) shift; break;;
+    (-*) _usage "$1: unknown option";;
+    (*) VAL1="$1"; VAL2="$2"; break;;
+    esac
+  done
+  _root
+  if [ -z "$VAL1" ] || [ -z "$VAL2" ]; then
+    _usage "required parameter missing"
+  fi
+  step_01
+  step_02
+  _config "/etc/lsb-release"
+  _echo $DISTRIB_DESCRIPTION
+  _echo $DISTRIB_CODENAME
+}
+main "$@"

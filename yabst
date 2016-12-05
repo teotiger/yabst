@@ -16,33 +16,37 @@
 ## Example:
 ## yabst -q "lorem ipsum" 123
 ##
- 
+
 #-------------------#
 # GLOBAL PARAMETERS #
 #-------------------#
 VMAJ=0  # major version
 VMIN=1  # minor version
 VREV=0  # patch version
- 
+
 QTM=0   # quiet mode flag
- 
+
 VAL1=   # first example parameter
 VAL2=   # second example parameter
- 
+
 #------------------#
 # GLOBAL FUNCTIONS #
 #------------------#
-_config() {  source $1; }
+_config() {
+  source $1;
+}
 _echo() {
   if [ $QTM -eq 0 ]; then
     echo "$1"
   fi
 }
-_error() { _echo "$1"; exit 1; }
+_error() {
+  _echo "$1";
+  exit 1;
+}
 _root() {
   if [[ $(whoami) != "root" ]]; then
-    echo "This program must be run as root." >&2
-    exit 1
+    _echo "This program must be run as root."
   fi
 }
 _title() {
@@ -60,7 +64,7 @@ _version() {
   echo "Web: http://github.com/teotiger/yabst" && echo ""
   exit 2
 }
- 
+
 #--------------------#
 # PROGRAMM FUNCTIONS #
 #--------------------#
@@ -72,7 +76,7 @@ step_01(){
 step_02(){
   _title "Second program step"
 }
- 
+
 #-----------------------#
 # MAIN FUNCTION / START #
 #-----------------------#

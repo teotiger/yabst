@@ -33,7 +33,7 @@ VAL2=   # second example parameter
 # GLOBAL FUNCTIONS #
 #------------------#
 _config() {
-  source $1;
+  source "$1"
 }
 _echo() {
   if [ $QTM -eq 0 ]; then
@@ -41,8 +41,8 @@ _echo() {
   fi
 }
 _error() {
-  _echo "$1";
-  exit 1;
+  _echo "$1"
+  exit 1
 }
 _root() {
   if [[ $(whoami) != "root" ]]; then

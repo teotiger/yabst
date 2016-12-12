@@ -46,7 +46,7 @@ _error() {
 }
 _root() {
   if [[ $(whoami) != "root" ]]; then
-    _echo "This program must be run as root."
+    _error "This program must be run as root."
   fi
 }
 _title() {
@@ -98,7 +98,7 @@ main() {
   step_01
   step_02
   _config "/etc/lsb-release"
-  _echo $DISTRIB_DESCRIPTION
-  _echo $DISTRIB_CODENAME
+  _echo "$DISTRIB_DESCRIPTION"
+  _echo "$DISTRIB_CODENAME"
 }
 main "$@"

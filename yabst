@@ -18,7 +18,7 @@
 ##
 
 #-------------------#
-# GLOBAL PARAMETERS #
+# GLOBAL VARIABLES  #
 #-------------------#
 VMAJ=0  # major version
 VMIN=1  # minor version
@@ -26,8 +26,8 @@ VREV=0  # patch version
 
 QTM=0   # quiet mode flag
 
-VAL1=   # first example parameter
-VAL2=   # second example parameter
+VAL1="" # first example parameter
+VAL2="" # second example parameter
 
 #------------------#
 # GLOBAL FUNCTIONS #
@@ -41,7 +41,7 @@ _echo() {
   fi
 }
 _error() {
-  _echo "$1"
+  echo "$1"
   exit 1
 }
 _root() {
@@ -71,7 +71,7 @@ _write(){
   fi
 
   cat <<EOF > "$fname"
-$1
+"$1"
 EOF
   chown $SUDO_UID:$SUDO_GID "$fname"
   _echo "File '$fname' created"

@@ -71,7 +71,7 @@ _write(){
   fi
 
   cat <<EOF > "$fname"
-"$1"
+$1
 EOF
   chown $SUDO_UID:$SUDO_GID "$fname"
   _echo "File '$fname' created"

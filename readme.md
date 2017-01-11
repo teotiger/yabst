@@ -20,7 +20,7 @@ Displays a error message ($1) and exit the program.
 **_replace**
 Replace in a file ($1) some string ($2) with another string ($3).
 
-**_replace**
+**_require**
 Checks if the program ($1) is installed. Otherwise it displays a error message and exit the program.
 
 **_root**

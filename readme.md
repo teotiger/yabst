@@ -20,6 +20,9 @@ Displays a error message ($1) and exit the program.
 **_replace**
 Replace in a file ($1) some string ($2) with another string ($3).
 
+**_replace**
+Checks if the program ($1) is installed. Otherwise it displays a error message and exit the program.
+
 **_root**
 Checks if the current user root, if not the program is terminated.
 
@@ -40,7 +43,7 @@ YABST is released under the [MIT license](https://github.com/teotiger/yabst/blob
 
 ## Version History
 Version 1.1 - January 11, 2017
-* new functions (_replace and _write)
+* new functions (_replace,  _require and _write)
 
 Version 1.0 – November 11, 2016
 * Initial release

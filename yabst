@@ -32,15 +32,15 @@ VAL2="" # second example parameter
 #------------------#
 # GLOBAL FUNCTIONS #
 #------------------#
-_config() {
+_config(){
   source "$1"
 }
-_echo() {
+_echo(){
   if [ $QTM -eq 0 ]; then
     echo "$1"
   fi
 }
-_error() {
+_error(){
   echo "$1"
   exit 1
 }
@@ -55,12 +55,17 @@ _replace(){
     _error "Function needs 3 parameter (file, search, replace)."
   fi
 }
-_root() {
+_require(){
+  if ! [ -n "$(command -v $1)" ]; then
+    _error "The program $1 is required. Please install it first."
+  fi
+}
+_root(){
   if [[ $(whoami) != "root" ]]; then
     _error "This program must be run as root."
   fi
 }
-_title() {
+_title(){
   if [ $QTM -eq 0 ]; then
     (echo; echo \*\*\* $1 \*\*\*; echo)
   fi
@@ -70,7 +75,7 @@ _usage(){
   sed -n '/^##/,/^$/s/^## \{0,1\}//p' "$0"
   exit 2
 }
-_version() {
+_version(){
   echo "" && echo "$0 version $VMAJ.$VMIN.$VREV"
   echo "Web: http://github.com/teotiger/yabst" && echo ""
   exit 2

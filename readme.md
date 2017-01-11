@@ -17,7 +17,7 @@ Displays a message ($1) if the quite mode flag is set to false.
 **_error**
 Displays a error message ($1) and exit the program.
 
-** _replace **
+**_replace**
 Replace in a file ($1) some string ($2) with another string ($3).
 
 **_root**

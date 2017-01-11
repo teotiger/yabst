@@ -44,6 +44,17 @@ _error() {
   echo "$1"
   exit 1
 }
+_replace(){
+  if [ "$#" -eq 3 ]; then
+    if [ -e "$1" ]; then
+      sed -i 's/'"${2////\\/}"'/'"${3////\\/}"'/g' "$1"
+    else
+      _error "'$1' is not a valid file."
+    fi
+  else
+    _error "Function needs 3 parameter (file, search, replace)."
+  fi
+}
 _root() {
   if [[ $(whoami) != "root" ]]; then
     _error "This program must be run as root."
@@ -76,7 +87,6 @@ EOF
   chown $SUDO_UID:$SUDO_GID "$fname"
   _echo "File '$fname' created"
 }
-
 #--------------------#
 # PROGRAMM FUNCTIONS #
 #--------------------#

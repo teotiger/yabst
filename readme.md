@@ -42,7 +42,7 @@ Write the content ($1) to a file ($2 or 'out.txt' if $2 is empty).
 YABST is released under the [MIT license](https://github.com/teotiger/yabst/blob/master/license.txt).
 
 ## Version History
-Version 1.1 - January 11, 2017
+Version 1.1 - January 14, 2017
 * new functions (_replace,  _require and _write)
 
 Version 1.0 – November 11, 2016

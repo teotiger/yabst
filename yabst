@@ -20,7 +20,7 @@
 #-------------------#
 # GLOBAL VARIABLES  #
 #-------------------#
-VMAJ=0  # major version
+VMAJ=1  # major version
 VMIN=1  # minor version
 VREV=0  # patch version
 
@@ -46,7 +46,7 @@ _error(){
 }
 _replace(){
   if [ "$#" -eq 3 ]; then
-    if [ -e "$1" ]; then
+    if [ -f "$1" ]; then
       sed -i 's/'"${2////\\/}"'/'"${3////\\/}"'/g' "$1"
     else
       _error "'$1' is not a valid file."
